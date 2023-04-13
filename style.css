@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Mrs+Saint+Delafield&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-size: 1.25em;
+  font-family: 'IBM Plex Mono', 'Courier New', Courier, monospace;
+  letter-spacing: .2em;
+}
+
+/* cacher la barre de scroll */
+html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* liste affichant la section actuelle */
+ul {
+  top: calc(100% / 2 - 60px);
+  position: fixed;
+  height: auto;
+  right: 10px;
+  list-style-type: none;
+}
+
+li {
+  width: 8px;
+  height: 8px;
+  background-color: brown;
+  border-radius: 4px;
+  margin: 20px 15px;
+  transition: 0.3s ease;
+}
+
+.active {
+  background-color: yellow;
+}
+
+/* une seule section */
+.section {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenu {
+  display: block;
+  text-align: center;
+}
+
+/* SECTIONS INDIVIDUELLES */
+
+#accueil {
+  background-color: #A29BFE;
+  color: black;
+}
+
+h1 {
+  color: white;
+  font-family: 'Mrs Saint Delafield', 'Times New Roman', Times, serif;
+  font-weight: 200;
+  font-size: 6em;
+  letter-spacing: normal;
+}
+
+#demon {
+  background-color: rgb(153, 204, 255);
+}
+
+#x {
+  background-color: rgb(2, 153, 102);
+}
+
+#y {
+  background-color: rgb(255, 7, 102);
+}
