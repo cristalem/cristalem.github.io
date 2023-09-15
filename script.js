@@ -5,7 +5,7 @@ if ("scrollRestoration" in history) {
 // revenir en haut de la page
 smoothScrollToTop();
 
-const DUREE_SCROLL = 750;
+const DUREE_SCROLL = 600;
 
 const sections = document.querySelectorAll(".section");
 const nbSections = sections.length;
