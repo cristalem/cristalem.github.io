@@ -78,9 +78,21 @@ h1 {
 }
 
 #x {
-  background-color: rgb(2, 153, 102);
+  background-color: rgb(91, 229, 183);
 }
 
 #y {
-  background-color: rgb(255, 7, 102);
+  background-color: rgb(153, 204, 255);
+}
+#z {
+  background-color: rgb(91, 229, 183);
+}
+#a {
+  background-color: rgb(153, 204, 255);
+}
+#b {
+  background-color: rgb(91, 229, 183);
+}
+#c {
+  background-color: rgb(153, 204, 255);
 }
