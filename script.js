@@ -42,15 +42,4 @@ document.addEventListener("DOMContentLoaded", () => {
       popup.style.display = "flex";
     }
   });
-  document.addEventListener("DOMContentLoaded", () => {
-    // Votre script existant
-  
-    // Ajout de la logique pour le menu burger
-    const burgerMenu = document.getElementById('burger-menu');
-    const headerMenu = document.getElementById('header__menu');
-  
-    burgerMenu.addEventListener('click', () => {
-      headerMenu.classList.toggle('show');
-    });
-  });
   
