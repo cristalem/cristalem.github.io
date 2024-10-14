@@ -279,18 +279,6 @@ footer {
     font-size: 42px;
   }
 
-  #elementsPres img {
-    width: 350px;
-  }
-
-  #elementsExp {
-    justify-content: space-around;
-  }
-
-  .collection-item {
-    width: 28%;
-  }
-
   footer {
     font-size: 18px;
   }
