@@ -18,113 +18,125 @@
   src: url("fonts/Poppins-Light.ttf") format("truetype");
   font-weight: 600;
 }
+/* Base (styles par défaut pour mobiles) */
 body {
   font-family: "Poppins Medium";
-
   color: #471f52;
   margin: 0;
   padding: 0;
   background-image: url(images/Background.png);
-  background-size: 100%;
+  background-size: cover;
 }
+
 main {
-  max-width: 1100px;
+  max-width: 90%;
   margin: auto;
 }
-#elementsPres img {
-  height: 450px;
-  border-radius: 50%;
-}
+
 header {
   background-color: #471f52;
   width: 100%;
   color: #fff;
   text-align: center;
-  padding-right: 20px;
-  margin-top: 50px;
+  padding: 15px;
   position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  margin: 0;
 }
 #header__menu {
-  display: flex;
-  align-items: center;
-  list-style: none;
-  padding: 0;
-  gap: 2em;
+  background-color: #471f52;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: -5px;
+  padding: 5px;
 }
+
+#header__menu.show {
+  display: flex;
+}
+
+.burger {
+  display: flex;
+  font-size: 30px;
+  color: #f1f5f9;
+  cursor: pointer;
+}
+
 .header__link {
   text-decoration: none;
   font-weight: 600;
   color: #f1f5f9;
+  margin: 10px 0;
   transition: color 0.3s;
 }
+
 .header__link:hover {
   color: #f7af9d;
 }
 
+/* Section about */
 #about {
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-#about h2 {
-  font-family: "Horizon";
-  font-size: 72px;
-}
-#about h3 {
-  font-family: "Vintage Goods";
-  font-size: 72px;
-}
-#about p {
-  font-size: 200%;
-  max-width: 80%;
+  height: 100vh;
+  padding-top: 100px;
 }
 
+#about h2 {
+  font-family: "Horizon";
+  font-size: 36px;
+}
+
+#about h3 {
+  font-family: "Vintage Goods";
+  font-size: 28px;
+}
+
+#about p {
+  font-size: 18px;
+  max-width: 90%;
+}
+
+#elementsPres img {
+  width: 250px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+/* Section des expériences */
 #elementsExp {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  color: #471f52;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
+
 .collection-item {
-  width: 300px;
+  width: 100%;
+  max-width: 350px;
+  min-width: 250px;
   border: 1px solid #ddd;
   padding: 20px;
-  margin-bottom: 20px;
   background-color: #fff;
+  text-align: center;
   transition: transform 0.3s;
 }
+
 .collection-item:hover {
   transform: translateY(-10px);
 }
 
-.btn {
-  display: inline-block;
-  font-weight: 600;
-  text-decoration: none;
-  background-color: #333;
-  color: #f1f5f9;
-  padding: 0.5em 1em;
-  border-radius: 6px;
-  transition: transform 0.3s;
-}
-.btn:hover {
-  transform: translateY(-3px);
-}
-
-footer {
-  background-color: #ffffff;
-  color: #000000;
-  text-align: center;
-  padding: 10px 0;
-  width: 100%;
-  bottom: 0;
-}
-
+/* Popup */
 .popup {
   display: none;
   position: fixed;
@@ -140,17 +152,47 @@ footer {
 .popup-content {
   display: flex;
   justify-content: center;
-  position: relative;
-  width: 70%;
+  align-items: center;
+  position: relative; /* Assure que les flèches sont positionnées par rapport au parent */
+  width: 90%; /* Ajuste la largeur du contenu pour s'adapter à l'écran */
+  max-width: 600px; /* Limite maximale pour grand écran */
+  max-height: 80vh; /* Limite maximale de hauteur pour s'adapter à l'écran verticalement */
 }
 
 #popup-image {
   width: 100%;
+  height: auto; /* Permet à l'image de garder son ratio d'aspect */
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 1; /* L'image est en-dessous des flèches */
 }
-.popup-content img {
-  max-width: 90%;
-  max-height: 90%;
+.popup-content p {
+  text-align: center;
+}
+.popup-content p a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.5); /* Ajout d'un fond pour que les flèches soient visibles */
   border-radius: 5px;
+  z-index: 2; /* S'assurer que les flèches apparaissent au-dessus de l'image */
+}
+
+#prev {
+  left: 10px;
+}
+
+#next {
+  right: 10px;
 }
 
 .close {
@@ -162,34 +204,95 @@ footer {
   cursor: pointer;
 }
 
-.nav-arrow {
-  position: absolute;
-  top: 50%;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 5px;
+/* Footer */
+footer {
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  bottom: 0;
 }
 
-#prev {
-  left: 10px;
+/* Desktop Styles */
+@media (min-width: 768px) {
+  #header__menu {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: flex-end;
+    padding-right: 40px;
+    padding-bottom: 10px;
+  }
+  #header__menu li {
+    list-style: none;
+    padding-left: 10px;
+  }
+
+  #elementsExp {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .collection-item {
+    min-width: 350px;
+  }
+  .burger {
+    display: none;
+  }
+  .popup-content {
+    width: 90%;
+    max-width: 90%;
+    max-height: 70vh;
+  }
+
+  #popup-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .nav-arrow {
+    font-size: 30px;
+    padding: 10px;
+  }
 }
 
-#next {
-  right: 10px;
-}
-.popup-content div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.popup-content a {
-  color: #ffffff;
-  font-family: "Poppins Light";
-  text-decoration: none;
-  transition: color 0.3s;
-}
-.popup-content a:hover {
-  color: #f7af9d;
+@media (min-width: 1000px) {
+  main {
+    padding-left: 20px;
+    max-width: 1100px;
+    padding-right: 20px;
+  }
+
+  #about {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  #about h2 {
+    font-size: 48px;
+  }
+
+  #about h3 {
+    font-size: 42px;
+  }
+
+  #elementsPres img {
+    width: 350px;
+  }
+
+  #elementsExp {
+    justify-content: space-around;
+  }
+
+  .collection-item {
+    width: 28%;
+  }
+
+  footer {
+    font-size: 18px;
+  }
 }

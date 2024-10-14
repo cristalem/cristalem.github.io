@@ -42,4 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
       popup.style.display = "flex";
     }
   });
+
+  const burgerMenu = document.getElementById('burger-menu');
+  const headerMenu = document.getElementById('header__menu');
+
+  burgerMenu.addEventListener('click', () => {
+    headerMenu.classList.toggle('show');
+  });
+
+
   
