@@ -242,9 +242,7 @@ footer {
     display: none;
   }
   .popup-content {
-    width: 90%;
-    max-width: 90%;
-    max-height: 70vh;
+    max-width: 60vw;
   }
 
   #popup-image {
