@@ -25,23 +25,27 @@
   </header>
 
   <main>
-    <div id="about">
+    <!-- Page d'accueil -->
+    <section id="home">
+      <h1>Bienvenue ! Découvrez mon Portfolio</h1>
+      <i id="enter-site" class="fa-solid fa-arrow-down"></i>
+    </section>
 
+    <div id="about" class="hidden">
       <div>
         <h3>Bonjour</h3>
         <h2>JE SUIS ELSA</h2>
         <p>Etudiante en 2eme année de BUT informatique,</p>
-        <p>Je suis a la recherche d’un stage pour valider ma 2ème année a partir du 7 avril</p>
+        <p>Je suis à la recherche d’un stage pour valider ma 2ème année à partir du 7 avril</p>
       </div>
 
       <div id="elementsPres">
         <img src="images/IMG_2187.JPG" alt="Photo de profil"
           style="width:350px;border-top-left-radius: 50%;border-top-right-radius: 20%;border-bottom-left-radius: 20%;border-bottom-right-radius: 50%;border:solid;">
       </div>
-
     </div>
 
-    <section class="collections">
+    <section class="collections hidden">
       <h2 id="featured">Mes Expériences</h2>
       <div id="elementsExp">
         <div class="collection-item" data-image="retEx/servRes.png">
@@ -66,7 +70,7 @@
         </div>
         <div class="collection-item" data-image="retEx/travailEnEquipe.png">
           <img src="images/TEE.png" alt="Collection 5">
-          <h3>Travail en equipes</h3>
+          <h3>Travail en équipes</h3>
           <p>Préparation de la JPO du BUT informatique de 2023</p>
         </div>
         <div class="collection-item" data-image="retEx/Pixelwar.png">
@@ -89,18 +93,24 @@
       </div>
     </div>
 
-    <div class="section" id="contact">
+    <div class="section hidden" id="contact">
       <h2>Contact</h2>
-
-      <p>
-        Pour me contacter, envoyez un email à <a href="mailto:elsa.mazzet@outlook.com">elsa.mazzet@outlook.com</a>
-      </p>
+      <form action="/submit" method="POST">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" name="name" required>
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <label for="message">Message :</label>
+        <textarea id="message" name="message" required></textarea>
+        <button type="submit">Envoyer</button>
+      </form>
     </div>
-
   </main>
+
   <footer>
     <p>&copy; 2024 Portfolio de MAZZETTI Elsa</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 

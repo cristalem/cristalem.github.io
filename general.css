@@ -32,7 +32,81 @@ main {
   max-width: 90%;
   margin: auto;
 }
+/* Ajout pour masquer la navigation sur la page d'accueil */
+header {
+  opacity: 0;
+  transition: opacity 1s;
+  display: none;
+}
 
+header.show {
+  opacity: 1;
+  display: flex;
+}
+
+/* Animation pour faire apparaître les sections en défilement */
+.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.show-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#home h1 {
+  font-size: 48px;
+  color: #471f52;
+}
+#enter-site {
+  color: #471f52;
+  font-size: 200%;
+}
+#home button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Formulaire de contact */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form label {
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+form button {
+  padding: 10px;
+  background-color: #471f52;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #f7af9d;
+}
 header {
   background-color: #471f52;
   width: 100%;
