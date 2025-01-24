@@ -39,16 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     popup.style.display = "flex";
   }
 
-  // Ajout du code pour afficher la navigation après le bouton "Entrer"
-  const enterButton = document.getElementById("enter-site");
-  const header = document.querySelector("header");
-  const aboutSection = document.getElementById("about");
 
-  enterButton.addEventListener("click", () => {
-    document.getElementById("home").style.display = "none";
-    header.classList.add("show");
-    aboutSection.classList.remove("hidden");
-  });
 
   // Gestion des animations lors du défilement
   const hiddenElements = document.querySelectorAll(".hidden");
