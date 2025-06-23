@@ -3,82 +3,99 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, viewport-fit=cover">
   <title>Portfolio de Elsa Mazzetti</title>
   <link rel="stylesheet" href="general.css">
   <script src="https://kit.fontawesome.com/3ed158a566.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
+
+  <div class="custom-cursor"></div>
   <header>
-    <nav>
-      <div id="burger-menu" class="burger">
-        <i class="fas fa-bars"></i> <!-- Icône de burger -->
-      </div>
-      <ul id="header__menu">
-        <li><a class="header__link" href="#about">À-propos</a></li>
-        <li><a class="header__link" href="#featured">Projets</a></li>
-        <li><a class="header__link" href="#contact">Contact</a></li>
-        <li><a class="header__link" href="images/cv (1).pdf" target="_blank">CV</a></li>
-      </ul>
-    </nav>
+    <a href="images/cv (1).pdf" target="_blank" class="cv-button">CV</a>
   </header>
 
   <main>
 
 
     <div id="about">
-      <div>
+      <img src="images/lune.png" alt="Lune" class="lune-img">
+      <img src="images/soleil.png" alt="Soleil" class="soleil-img">
+      <img src="images/dune_nuit.svg" alt="Dune nuit" class="dune-img dune-nuit">
+      <img src="images/dune_jour.svg" alt="Dune jour" class="dune-img dune-jour">
+      <div id="about-text">
         <h3>Bonjour</h3>
         <h2>JE SUIS ELSA</h2>
-        <p>Etudiante en 2eme année de BUT informatique,</p>
-        <p>Je suis à la recherche d’un stage pour valider ma 2ème année à partir du 7 avril</p>
+        <p>Etudiante en 2ème année de BUT informatique,</p>
+        <p>Je suis à la recherche d'une alternance pour ma 3ème année à partir de septembre 2025</p>
       </div>
 
-      <div id="elementsPres">
-        <img src="images/IMG_2187.JPG" alt="Photo de profil"
-          style="width:350px;border-top-left-radius: 50%;border-top-right-radius: 20%;border-bottom-left-radius: 20%;border-bottom-right-radius: 50%;border:solid;">
-      </div>
+      <canvas id="organic3d" class="organic-canvas"></canvas>
     </div>
 
     <section class="collections">
       <h2 id="featured">Mes Expériences</h2>
-      <div id="elementsExp">
-        <div class="collection-item" data-image="retEx/symfony.png">
-          <img src="images/Group42.png" alt="Collection 1">
-          <h3>APPLICATION WEB SYMFONY</h3>
-          <p>Application web pour la gestion et l’organisation de compétitions</p>
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-track">
+            <div class="carousel-item" data-image="retEx/symfony.png">
+              <div class="carousel-content">
+                <img src="images/Group42.png" alt="Application Symfony">
+                <h3>APPLICATION WEB SYMFONY</h3>
+                <p>Application web pour la gestion et l'organisation de compétitions</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-image="retEx/servRes.png">
+              <div class="carousel-content">
+                <img src="images/serv.png" alt="Services Réseaux">
+                <h3>INSTALLATION DE SERVICES RESEAUX</h3>
+                <p>Installation et configuration d'un réseau virtuel à 2 sous-réseaux</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-image="retEx/appC.png">
+              <div class="carousel-content">
+                <img src="images/Group43.png" alt="Application C#">
+                <h3>Application en C#</h3>
+                <p>Application d'analyse de données</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-image="retEx/ia.png">
+              <div class="carousel-content">
+                <img src="images/ToWA.png" alt="IA Jeu de Plateau">
+                <h3>IA JEU DE PLATEAU</h3>
+                <p>Implémentation d'une IA stratège pour un jeu de plateau</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-image="retEx/attaque.png">
+              <div class="carousel-content">
+                <img src="images/Group44.png" alt="Attaque Réseaux">
+                <h3>Attaque de services reseaux</h3>
+                <p>Attaque DoS et Man in the middle d'un reseau à 2 sous-réseaux</p>
+              </div>
+            </div>
+            <div class="carousel-item" data-image="retEx/Pixelwar.png">
+              <div class="carousel-content">
+                <img src="images/PW.png" alt="Pixel War">
+                <h3>Pixel War</h3>
+                <p>Gestion d'une API avec JavaScript</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="collection-item" data-image="retEx/servRes.png">
-          <img src="images/serv.png" alt="Collection 2">
-          <h3>INSTALLATION DE SERVICES RESEAUX</h3>
-          <p>Installation et configuration d'un réseau virtuel à 2 sous-réseaux</p>
-        </div>
-        <div class="collection-item" data-image="retEx/appC.png">
-          <img src="images/Group43.png" alt="Collection 3">
-          <h3>Application en C#</h3>
-          <p>Application d’analyse de données</p>
-        </div>
-        <div class="collection-item" data-image="retEx/ia.png">
-          <img src="images/ToWA.png" alt="Collection 4">
-          <h3>IA JEU DE PLATEAU</h3>
-          <p>Implémentation d'une IA stratège pour un jeu de plateau</p>
-        </div>
-        <div class="collection-item" data-image="retEx/attaque.png">
-          <img src="images/Group44.png" alt="Collection 5">
-          <h3>Attaque de services reseaux</h3>
-          <p>Attaque DoS et Man in the middle d’un reseau à 2 sous-réseaux</p>
-        </div>
-        <div class="collection-item" data-image="retEx/Pixelwar.png">
-          <img src="images/PW.png" alt="Collection 6">
-          <h3>Pixel War</h3>
-          <p>Gestion d'une API avec JavaScript</p>
-        </div>
+        <button class="carousel-btn carousel-btn-prev">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn carousel-btn-next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
       </div>
     </section>
 
+    <!-- Popup pour afficher les détails des expériences -->
     <div id="popup" class="popup">
-      <span class="close">&times;</span>
+      <span class="close">×<i class="fas fa-times"></i></span>
       <div class="popup-content">
         <span id="prev" class="nav-arrow"><i class="fa-solid fa-chevron-left"></i></span>
         <div>
@@ -91,7 +108,7 @@
 
     <div class="section" id="contact">
       <h2>Contact</h2>
-      <form action="/submit" method="POST">
+      <form id="contact-form">
         <label for="name">Nom :</label>
         <input type="text" id="name" name="name" required>
         <label for="email">Email :</label>
@@ -99,6 +116,7 @@
         <label for="message">Message :</label>
         <textarea id="message" name="message" required></textarea>
         <button type="submit">Envoyer</button>
+        <p id="form-status" class="form-status"></p>
       </form>
     </div>
   </main>
