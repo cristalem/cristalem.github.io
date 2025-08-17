@@ -37,28 +37,16 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let mouseX = 0;
     let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
     
     // Suivre la position de la souris
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      
+      // Positionner directement le curseur sans délai
+      cursor.style.left = mouseX + 'px';
+      cursor.style.top = mouseY + 'px';
     });
-    
-    // Animation fluide du curseur
-    function animateCursor() {
-      // Interpolation fluide
-      cursorX += (mouseX - cursorX) * 0.1;
-      cursorY += (mouseY - cursorY) * 0.1;
-      
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
-      
-      requestAnimationFrame(animateCursor);
-    }
-    
-    animateCursor();
     
     // Effet hover sur les éléments interactifs
     const interactiveElements = document.querySelectorAll('a, button, .carousel-item, .header__link, .burger, .close, .nav-arrow, .lune-img, .soleil-img');
@@ -90,8 +78,21 @@ document.addEventListener("DOMContentLoaded", () => {
     function resizeCanvas() {
       const aboutSection = document.getElementById('about');
       const rect = aboutSection.getBoundingClientRect();
-      canvas.width = window.innerWidth * window.devicePixelRatio;
-      canvas.height = window.innerHeight * window.devicePixelRatio;
+      
+      // Sur desktop, utiliser la largeur complète de l'écran
+      if (window.innerWidth > 768) {
+        canvas.width = window.innerWidth * window.devicePixelRatio;
+        canvas.height = window.innerHeight * window.devicePixelRatio;
+        canvas.style.width = window.innerWidth + 'px';
+        canvas.style.height = window.innerHeight + 'px';
+      } else {
+        // Sur mobile, utiliser la taille de la section
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+      }
+      
       ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
     }
     
@@ -106,17 +107,31 @@ document.addEventListener("DOMContentLoaded", () => {
     canvas.style.height = '100%';
     canvas.style.zIndex = '1';
     
-    // Suivre la position de la souris
+    // Suivre la position de la souris avec correction des coordonnées
     canvas.addEventListener('mousemove', (e) => {
       const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
+      mouseX = (e.clientX - rect.left) * scaleX;
+      mouseY = (e.clientY - rect.top) * scaleY;
+    });
+    
+    // Suivre la position de la souris sur le document pour la réactivité
+    document.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      if (e.clientX >= rect.left && e.clientX <= rect.right && 
+          e.clientY >= rect.top && e.clientY <= rect.bottom) {
+        const scaleX = canvas.width / rect.width;
+        const scaleY = canvas.height / rect.height;
+        mouseX = (e.clientX - rect.left) * scaleX;
+        mouseY = (e.clientY - rect.top) * scaleY;
+      }
     });
     
     // Points de référence pour former le "E" sans bruit aléatoire
     function getEPoints() {
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2 + 200; // Déplacé encore plus bas
+      const centerX = canvas.width / (2 * window.devicePixelRatio);
+      const centerY = canvas.height / (2 * window.devicePixelRatio) + 200; // Déplacé encore plus bas
       const size = 160;
       const spacing = 12; // Espacement réduit entre les particules
       const lineWidth = 25; // Largeur des lignes du E
@@ -310,12 +325,14 @@ document.addEventListener("DOMContentLoaded", () => {
           }
           
           // Rebondir sur les bords
-          if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-          if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+          if (this.x < 0 || this.x > canvas.width / window.devicePixelRatio) this.vx *= -1;
+          if (this.y < 0 || this.y > canvas.height / window.devicePixelRatio) this.vy *= -1;
           
           // Garder dans les limites
-          this.x = Math.max(0, Math.min(canvas.width, this.x));
-          this.y = Math.max(0, Math.min(canvas.height, this.y));
+          const canvasWidth = canvas.width / window.devicePixelRatio;
+          const canvasHeight = canvas.height / window.devicePixelRatio;
+          this.x = Math.max(0, Math.min(canvasWidth, this.x));
+          this.y = Math.max(0, Math.min(canvasHeight, this.y));
         }
       }
       
@@ -380,10 +397,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const particles = [];
       const ePoints = getEPoints();
       const particleCount = ePoints.length;
+      
+      // Utiliser la taille réelle du canvas pour la création des particules
+      const canvasWidth = canvas.width / window.devicePixelRatio;
+      const canvasHeight = canvas.height / window.devicePixelRatio;
+      
       for (let i = 0; i < particleCount; i++) {
         particles.push(new Particle(
-          Math.random() * canvas.width,
-          Math.random() * canvas.height,
+          Math.random() * canvasWidth,
+          Math.random() * canvasHeight,
           i
         ));
       }
@@ -647,6 +669,8 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Initialize carousel
   function initCarousel() {
+    // Réinitialiser l'index
+    currentIndex = 0;
     updateCarousel();
   }
   
@@ -654,7 +678,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateCarousel() {
     carouselItems.forEach((item, index) => {
       item.classList.remove('active', 'prev', 'next');
-      
       if (index === currentIndex) {
         item.classList.add('active');
       } else if (index === (currentIndex - 1 + totalItems) % totalItems) {
@@ -663,12 +686,24 @@ document.addEventListener("DOMContentLoaded", () => {
         item.classList.add('next');
       }
     });
-    
-    // Calculate transform for smooth sliding
-    const itemWidth = 340; // 300px width + 20px margin on each side
-    const offset = -currentIndex * itemWidth;
+  
+    const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+    const activeItem = carouselItems[currentIndex];
+    const activeItemWidth = activeItem.offsetWidth;
+    const activeItemLeft = activeItem.offsetLeft;
+  
+    // Récupérer la marge (droite + gauche, mais on suppose symétrique)
+    const style = window.getComputedStyle(activeItem);
+    const marginLeft = parseFloat(style.marginLeft) || 0;
+    const marginRight = parseFloat(style.marginRight) || 0;
+    const margin = (marginLeft + marginRight) / 2;
+  
+    // Corriger le centrage en retranchant la moitié de la marge
+    const offset = containerWidth / 2 - (activeItemLeft + activeItemWidth / 2 + margin);
     carouselTrack.style.transform = `translateX(${offset}px)`;
   }
+  
+  
   
   // Add event listeners for carousel navigation buttons
   if (nextBtn) {
@@ -784,6 +819,30 @@ document.addEventListener("DOMContentLoaded", () => {
   initAboutAnimations();
   initOrganic3D();
   initCustomCursor();
+
+  // Bouton de thème mobile
+  const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+  if (themeToggleMobile) {
+    let isDarkTheme = true;
+    
+    themeToggleMobile.addEventListener('click', () => {
+      isDarkTheme = !isDarkTheme;
+      
+      if (isDarkTheme) {
+        document.body.classList.remove('theme-light');
+        themeToggleMobile.innerHTML = '<i class="fas fa-moon"></i>';
+      } else {
+        document.body.classList.add('theme-light');
+        themeToggleMobile.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+    });
+    
+    // Synchroniser avec le thème existant
+    if (document.body.classList.contains('theme-light')) {
+      isDarkTheme = false;
+      themeToggleMobile.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+  }
 
   // Animation lune/soleil sur le cercle
   const lune = document.querySelector('.lune-img');

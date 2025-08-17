@@ -262,6 +262,13 @@ body.theme-light .cv-button:hover {
   pointer-events: none;
 }
 
+/* Masquer le cercle sur mobile */
+@media (max-width: 768px) {
+  #about::before {
+    display: none;
+  }
+}
+
 .organic-canvas {
   position: absolute;
   left: 0;
@@ -389,7 +396,6 @@ body.theme-light .cv-button:hover {
   margin: 0 auto;
   overflow: hidden;
   padding: 40px 0;
-  position: relative;
   z-index: 1;
 }
 
@@ -404,8 +410,7 @@ body.theme-light .cv-button:hover {
   transition: transform 0.5s ease-in-out;
   height: 100%;
   align-items: center;
-  position: absolute;
-  left: 0;
+  position: relative;
   width: max-content;
 }
 
@@ -600,7 +605,7 @@ body.theme-light .carousel-btn:hover {
   
   /* Responsive pour l'animation 3D */
   #about {
-    padding-top: 60px; /* Moins d'espace sur mobile */
+    padding-top: 60px;
   }
   
   .organic-canvas {
@@ -624,6 +629,603 @@ body.theme-light .carousel-btn:hover {
   
   #about p {
     font-size: 16px;
+  }
+}
+
+/* Règles responsives générales pour mobile */
+@media (max-width: 480px) {
+  /* Header */
+  header {
+    padding: 15px 15px 0 0;
+  }
+  
+  .cv-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  /* Section About */
+  #about {
+    padding: 20px 15px;
+    min-height: 100vh;
+  }
+  
+  #about-text {
+    padding: 0 20px;
+    margin: 20px auto 0 auto;
+  }
+  
+  #about h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  #about h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  #about p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  /* Cercle blanc */
+  #about::before {
+    top: 200px;
+    width: calc(70vw - 20px);
+    height: calc(70vw - 20px);
+  }
+  
+  /* Images lune/soleil */
+  .lune-img,
+  .soleil-img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  /* Carousel */
+  .collections {
+    padding: 30px 10px;
+  }
+  
+  .collections h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .carousel-container {
+    padding: 15px 0;
+  }
+  
+  .carousel-wrapper {
+    height: 250px;
+  }
+  
+  .carousel-item {
+    flex: 0 0 200px;
+    height: 230px;
+    margin: 0 8px;
+  }
+  
+  .carousel-content {
+    padding: 12px;
+  }
+  
+  .carousel-content img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .carousel-content h3 {
+    font-size: 12px;
+    margin: 8px 0;
+  }
+  
+  .carousel-content p {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+  
+  .carousel-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .carousel-btn-prev {
+    left: 5px;
+  }
+  
+  .carousel-btn-next {
+    right: 5px;
+  }
+  
+  /* Section langages */
+  .languages-section {
+    padding: 30px 10px;
+  }
+  
+  .languages-section h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .languages-category h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .languages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+  }
+  
+  .language-item {
+    padding: 12px;
+    min-width: 80px;
+  }
+  
+  .language-logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+  }
+  
+  .language-name {
+    font-size: 11px;
+  }
+  
+  /* Section contact */
+  .section {
+    padding: 40px 15px;
+  }
+  
+  .section h2 {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+  
+  form {
+    max-width: 100%;
+    gap: 15px;
+  }
+  
+  form input,
+  form textarea {
+    padding: 12px;
+    font-size: 16px; /* Évite le zoom sur iOS */
+  }
+  
+  form button {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+  
+  /* Popup */
+  .popup-content {
+    margin: 10px;
+    padding: 15px;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  #popup-image {
+    max-width: 95vw;
+    max-height: 70vh;
+  }
+  
+  .nav-arrow {
+    font-size: 20px;
+    padding: 6px;
+  }
+  
+  .close {
+    top: -30px;
+    right: -30px;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+  }
+  
+  .close i {
+    font-size: 18px;
+  }
+  
+  /* Footer */
+  footer {
+    padding: 15px 0;
+    font-size: 14px;
+  }
+}
+
+/* Règles pour tablette */
+@media (min-width: 481px) and (max-width: 768px) {
+  /* Header */
+  header {
+    padding: 20px 25px 0 0;
+  }
+  
+  .cv-button {
+    padding: 10px 18px;
+    font-size: 15px;
+  }
+  
+  /* Section About */
+  #about {
+    padding: 30px 25px;
+  }
+  
+  #about-text {
+    padding: 0 40px;
+    margin: 30px auto 0 auto;
+  }
+  
+  #about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  #about h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  #about p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  /* Cercle blanc */
+  #about::before {
+    top: 250px;
+    width: calc(75vw - 30px);
+    height: calc(75vw - 30px);
+  }
+  
+  /* Images lune/soleil */
+  .lune-img,
+  .soleil-img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  /* Carousel */
+  .collections {
+    padding: 50px 20px;
+  }
+  
+  .collections h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+  
+  .carousel-container {
+    padding: 25px 0;
+  }
+  
+  .carousel-wrapper {
+    height: 320px;
+  }
+  
+  .carousel-item {
+    flex: 0 0 280px;
+    height: 300px;
+    margin: 0 15px;
+  }
+  
+  .carousel-content {
+    padding: 18px;
+  }
+  
+  .carousel-content img {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 12px;
+  }
+  
+  .carousel-content h3 {
+    font-size: 16px;
+    margin: 12px 0;
+  }
+  
+  .carousel-content p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  .carousel-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 17px;
+  }
+  
+  .carousel-btn-prev {
+    left: 15px;
+  }
+  
+  .carousel-btn-next {
+    right: 15px;
+  }
+  
+  /* Section langages */
+  .languages-section {
+    padding: 50px 20px;
+  }
+  
+  .languages-section h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+  
+  .languages-category h3 {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+  
+  .languages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 25px;
+  }
+  
+  .language-item {
+    padding: 18px;
+    min-width: 110px;
+  }
+  
+  .language-logo {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 13px;
+  }
+  
+  .language-name {
+    font-size: 13px;
+  }
+  
+  /* Section contact */
+  .section {
+    padding: 50px 25px;
+  }
+  
+  .section h2 {
+    font-size: 32px;
+    margin-bottom: 35px;
+  }
+  
+  form {
+    max-width: 500px;
+    gap: 18px;
+  }
+  
+  form input,
+  form textarea {
+    padding: 14px;
+    font-size: 16px;
+  }
+  
+  form button {
+    padding: 14px 25px;
+    font-size: 16px;
+  }
+  
+  /* Popup */
+  .popup-content {
+    margin: 15px;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  #popup-image {
+    max-width: 90vw;
+    max-height: 80vh;
+  }
+  
+  .nav-arrow {
+    font-size: 22px;
+    padding: 7px;
+  }
+  
+  .close {
+    top: -35px;
+    right: -35px;
+    width: 35px;
+    height: 35px;
+    font-size: 35px;
+  }
+  
+  .close i {
+    font-size: 20px;
+  }
+  
+  /* Footer */
+  footer {
+    padding: 20px 0;
+    font-size: 16px;
+  }
+}
+
+/* Règles pour petits écrans en mode paysage */
+@media (max-height: 500px) and (orientation: landscape) {
+  #about {
+    min-height: 100vh;
+    padding: 20px;
+  }
+  
+  #about-text {
+    margin: 10px auto 0 auto;
+  }
+  
+  #about h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  #about h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  #about p {
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  
+  .lune-img,
+  .soleil-img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  #about::before {
+    top: 150px;
+    width: calc(60vw - 20px);
+    height: calc(60vw - 20px);
+  }
+  
+  .collections,
+  .languages-section,
+  .section {
+    padding: 30px 20px;
+  }
+  
+  .collections h2,
+  .languages-section h2,
+  .section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Règles pour très grands écrans */
+@media (min-width: 1400px) {
+  .carousel-container {
+    max-width: 1400px;
+  }
+  
+  .carousel-item {
+    flex: 0 0 400px;
+    height: 450px;
+    margin: 0 35px;
+  }
+  
+  .carousel-content img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .carousel-content h3 {
+    font-size: 20px;
+  }
+  
+  .carousel-content p {
+    font-size: 18px;
+  }
+  
+  .languages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 50px;
+  }
+  
+  .language-item {
+    padding: 30px;
+    min-width: 160px;
+  }
+  
+  .language-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+  
+  .language-name {
+    font-size: 18px;
+  }
+}
+
+/* Amélioration de l'accessibilité sur mobile */
+@media (max-width: 768px) {
+  /* Augmenter la taille des éléments cliquables */
+  .carousel-btn,
+  .cv-button,
+  form button {
+    min-height: 44px; /* Recommandation Apple pour l'accessibilité */
+  }
+  
+  /* Améliorer l'espacement pour le touch */
+  .carousel-item {
+    margin: 0 12px;
+  }
+  
+  .language-item {
+    margin: 5px;
+  }
+  
+  /* Optimiser la navigation tactile */
+  .carousel-track {
+    scroll-behavior: smooth;
+  }
+  
+  /* Améliorer la lisibilité */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  /* Optimiser les formulaires sur mobile */
+  form input,
+  form textarea {
+    -webkit-appearance: none;
+    border-radius: 8px;
+  }
+  
+  /* Améliorer la navigation au clavier */
+  .carousel-btn:focus,
+  .cv-button:focus,
+  form button:focus,
+  .language-item:focus {
+    outline: 2px solid #f5f5dc;
+    outline-offset: 2px;
+  }
+  
+  /* Optimiser le scroll sur mobile */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Améliorer la performance des animations sur mobile */
+  .carousel-item,
+  .language-item,
+  .carousel-content {
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  
+  /* Optimiser les images sur mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Améliorer la navigation tactile du carousel */
+  .carousel-container {
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  /* Optimiser l'affichage des popups sur mobile */
+  .popup {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Améliorer la lisibilité du texte sur mobile */
+  p, h2, h3 {
+    text-rendering: optimizeLegibility;
+    -webkit-font-feature-settings: "kern" 1;
+    font-feature-settings: "kern" 1;
   }
 }
 
@@ -874,6 +1476,31 @@ body.theme-light .custom-cursor.hover {
   box-shadow: 0 0 30px rgba(34, 94, 59, 0.8);
 }
 
+/* Masquer le curseur personnalisé sur mobile */
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
+  
+  /* Rétablir le curseur normal sur mobile */
+  body, a, button, input, textarea, select, label, .carousel-item, .collection-item, .carousel-content, .carousel-item *, .collection-item *, .carousel-content *, .close, .nav-arrow {
+    cursor: auto !important;
+  }
+  
+  *, *::before, *::after, 
+  .popup, .popup *, 
+  .cv-button, 
+  .carousel-btn,
+  .lune-img,
+  .soleil-img,
+  form *,
+  #enter-site,
+  header *,
+  footer * {
+    cursor: auto !important;
+  }
+}
+
 /* Ajout des règles pour le survol de la lune et du soleil */
 .lune-img:hover ~ .custom-cursor,
 .soleil-img:hover ~ .custom-cursor {
@@ -929,6 +1556,115 @@ footer * {
 body.theme-light .dune-nuit { display: none; }
 body.theme-light .dune-jour { display: block; }
 
+/* Ajuster le positionnement des dunes pour qu'elles soient collées */
+#about {
+  margin-bottom: 0;
+}
+
+.collections {
+  margin-top: 0;
+  position: relative;
+}
+
+.languages-section {
+  margin-top: 0;
+  position: relative;
+}
+
+.section {
+  margin-top: 0;
+  position: relative;
+}
+
+/* Boutons thème sur mobile */
+.theme-toggle-mobile {
+  display: none;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10003;
+  background: rgba(51, 51, 51, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.theme-toggle-mobile:hover {
+  background: rgba(26, 26, 26, 1);
+  transform: scale(1.1);
+}
+
+.theme-toggle-mobile i {
+  color: #f5f5dc;
+  font-size: 20px;
+}
+
+body.theme-light .theme-toggle-mobile {
+  background: rgba(245, 245, 220, 0.9);
+}
+
+body.theme-light .theme-toggle-mobile i {
+  color: #333333;
+}
+
+/* Masquer le rond soleil/lune sur mobile */
+@media (max-width: 768px) {
+  .lune-img,
+  .soleil-img {
+    display: none !important;
+  }
+  
+  .theme-toggle-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Ajuster le positionnement des dunes */
+  .dune-img {
+    bottom: 0;
+  }
+  
+  /* Centrer le carousel sur mobile */
+  .carousel-track {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* Ajuster la largeur des éléments du carousel */
+  .carousel-item {
+    flex: 0 0 250px;
+    height: 280px;
+    margin: 0 10px;
+  }
+  
+  /* Supprimer l'espacement entre les sections */
+  .collections,
+  .languages-section,
+  .section {
+    margin: 0;
+    border-radius: 0;
+  }
+  
+  /* Coller les sections */
+  .collections {
+    margin-top: 0;
+  }
+  
+  .languages-section {
+    margin-top: 0;
+  }
+  
+  .section {
+    margin-top: 0;
+  }
+}
+
+/* Sections et formulaire */
 .collections, .section {
   background: #0D0D0D;
 }
@@ -954,3 +1690,292 @@ body.theme-light .section {
   opacity: 1;
   color: #f44336;
 }
+
+/* Section des langages maîtrisés */
+.languages-section {
+  background: #0D0D0D;
+  padding: 60px 20px;
+  margin: 0;
+  border-radius: 0;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+.languages-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23471f52" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="%23f7af9d" opacity="0.03"/><circle cx="50" cy="10" r="0.5" fill="%23471f52" opacity="0.02"/><circle cx="10" cy="60" r="0.5" fill="%23f7af9d" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  pointer-events: none;
+}
+
+.languages-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: "Horizon";
+  font-size: 36px;
+  color: #f5f5dc;
+  position: relative;
+  z-index: 1;
+}
+
+.languages-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.languages-category {
+  margin-bottom: 50px;
+}
+
+.languages-category h3 {
+  text-align: center;
+  font-family: "Poppins Medium";
+  font-size: 24px;
+  color: #f5f5dc;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.languages-category h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f5f5dc, transparent);
+}
+
+.languages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.language-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.language-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.language-item:hover::before {
+  left: 100%;
+}
+
+.language-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.language-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.language-item:hover .language-logo {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.language-name {
+  font-family: "Poppins Medium";
+  font-size: 14px;
+  color: #f5f5dc;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin: 0;
+}
+
+.language-item:hover .language-name {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Styles pour le thème clair */
+body.theme-light .languages-section {
+  background: #F3EBBC;
+}
+
+body.theme-light .languages-section h2,
+body.theme-light .languages-category h3 {
+  color: #225e3b;
+}
+
+body.theme-light .languages-category h3::after {
+  background: linear-gradient(90deg, transparent, #225e3b, transparent);
+}
+
+body.theme-light .language-item {
+  background: rgba(34, 94, 59, 0.05);
+  border-color: rgba(34, 94, 59, 0.2);
+}
+
+body.theme-light .language-item:hover {
+  background: rgba(34, 94, 59, 0.1);
+  border-color: rgba(34, 94, 59, 0.4);
+}
+
+body.theme-light .language-name {
+  color: #225e3b;
+}
+
+body.theme-light .language-item:hover .language-name {
+  color: #1a4a2e;
+  text-shadow: 0 0 10px rgba(34, 94, 59, 0.3);
+}
+
+/* Responsive pour les langages */
+@media (max-width: 768px) {
+  .languages-section {
+    padding: 40px 15px;
+  }
+  
+  .languages-section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .languages-category h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
+  
+  .languages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
+  }
+  
+  .language-item {
+    padding: 15px;
+    min-width: 100px;
+  }
+  
+  .language-logo {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 12px;
+  }
+  
+  .language-name {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .languages-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 40px;
+  }
+  
+  .language-item {
+    padding: 25px;
+    min-width: 140px;
+  }
+  
+  .language-logo {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 18px;
+  }
+  
+  .language-name {
+    font-size: 16px;
+  }
+}
+
+/* Responsive pour le carousel */
+@media (max-width: 768px) {
+  .collections {
+    padding: 40px 15px;
+    margin: 30px 0;
+    border-radius: 15px;
+  }
+  
+  .collections h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+  }
+  
+  .carousel-container {
+    padding: 20px 0;
+  }
+  
+  .carousel-wrapper {
+    height: 300px;
+  }
+  
+  .carousel-item {
+    flex: 0 0 250px;
+    height: 280px;
+    margin: 0 10px;
+  }
+  
+  .carousel-content {
+    padding: 15px;
+  }
+  
+  .carousel-content img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .carousel-content h3 {
+    font-size: 14px;
+  }
+  
+  .carousel-content p {
+    font-size: 12px;
+  }
+  
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .carousel-btn-prev {
+    left: 10px;
+  }
+  
+  .carousel-btn-next {
+    right: 10px;
+  }
+}
+
